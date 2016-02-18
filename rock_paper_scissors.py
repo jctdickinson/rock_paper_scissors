@@ -2,9 +2,6 @@
 By JCT Dickinson
 Using PyCharm Community Edition 5.0.4, TextMate 2.0-ß.8.5
 
-14 Feb. 2016:
-Pseudocode drawn up
-
 15 Feb. 2016:
 Terrible implementation of pseudocode completed with huge block of if statements
 
@@ -12,20 +9,19 @@ Terrible implementation of pseudocode completed with huge block of if statements
 Inclusion of dictionary that defines game logic allows for great simplification of program
 
 17 Feb. 2016
-Changed varible to store options for computer to a tuple for slight increase in efficiency
+Changed variable to store options for computer to a tuple for slight increase in efficiency
 
-To do:
+18 Feb. 2016
+Commented in results of tuples vs. lists
+
+Possible future modifications:
 Make code more modular (functions).
-Research difference between random.choice(), random.range(), and random.randint()
-(used in previous magic8Ball project).
 Include input validation (... why are try-excepts acceptable here in Python..?)
-
 """
 
 # Note: Uses a Mersenne Twister as core generator
 import random
 
-# Note: while True seems to be the convention with Python 3+, as opposed to while 1.. for;; is completely foreign
 while True:
     print("""
     Enter your choice:
@@ -46,10 +42,17 @@ while True:
     elif user_choice.upper() == 'Q':
         break
 
+    # Test of tuple vs. list:
+    # $ python3 -m timeit "import random" "tuple = ('1', '2', '3')" "choice = random.choice(tuple)"
+    # 1000000 loops, best of 3: 1.77 usec per loop
+    # $ python3 -m timeit "import random" "list = ['1', '2', '3']" "choice = random.choice(list)"
+    # 1000000 loops, best of 3: 1.92 usec per loop
+
+    # Changed to tuple from list based on results
     comp_tup = ('rock', 'paper', 'scissors')
+
     # Below statement expressed as random choice within range:
-    # comp_choice = comp_list[random.randint(0, 2)]
-    # If choices are to be expanded, could also be expressed as
+    # Expressed with variable boundary:
     # print("Computer picked:  " + randChoice[random.randint(0, len(randChoice)])
     # From what I can garner, choice() is moderately faster
     comp_choice = random.choice(comp_tup)
