@@ -66,7 +66,7 @@ while True:
         break
     else:
 
-        # clear_screen()
+        clear_screen()
 
         # Changed to tuple from list based on results; see header for details
         comp_tup = ('rock', 'paper', 'scissors')
