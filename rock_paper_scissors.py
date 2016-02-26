@@ -6,9 +6,9 @@ Using PyCharm Community Edition 5.0.4, TextMate 2.0-ß.8.5
 # Note: Uses a Mersenne Twister as core generator
 import random
 
-def valid_choice(input_string):
+def valid_choice(input_string, valid_string):
     for letter in input_string:
-        if input_string.upper() not in "RPSQ" or len(input_string) > 1:
+        if input_string.upper() not in valid_string or len(input_string) > 1:
             return False
         else:
             return True
@@ -26,7 +26,7 @@ while True:
         """)
         
         user_choice = str(input())
-        if not valid_choice(user_choice):
+        if not valid_choice(user_choice, "RPSQ"):
             print("Invalid input. Try again.")
             continue
         else:
