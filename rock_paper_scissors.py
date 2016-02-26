@@ -22,17 +22,32 @@ Include input validation (... why are try-excepts acceptable here in Python..?)
 # Note: Uses a Mersenne Twister as core generator
 import random
 
+def valid_choice(input_string):
+    for letter in input_string:
+        if input_string.upper() not in "RPSQ" or len(input_string) > 1:
+            return False
+        else:
+            return True
+
 while True:
-    print("""
-    Enter your choice:
-    R or r for rock
-    P or p for paper
-    S or s for scissors
-    Q or q to quit
-    """)
-
-    user_choice = input()
-
+    
+    while True:
+        
+        print("""
+        Enter your choice:
+        R or r for rock
+        P or p for paper
+        S or s for scissors
+        Q or q to quit
+        """)
+        
+        user_choice = str(input())
+        if not valid_choice(user_choice):
+            print("Invalid input. Try again.")
+            continue
+        else:
+            break
+            
     if user_choice.upper() == 'R':
         user_choice = 'rock'
     elif user_choice.upper() == 'P':
@@ -41,11 +56,11 @@ while True:
         user_choice = 'scissors'
     elif user_choice.upper() == 'Q':
         break
-
+    
     # Test of tuple vs. list:
-    # $ python3 -m timeit "import random" "tuple = ('1', '2', '3')" "choice = random.choice(tuple)"
+    # $ python3 -m timeit "import random" "tuple = ('1', '2', '3')" "choice = random.choice(tuple)
     # 1000000 loops, best of 3: 1.77 usec per loop
-    # $ python3 -m timeit "import random" "list = ['1', '2', '3']" "choice = random.choice(list)"
+    # $ python3 -m timeit "import random" "list = ['1', '2', '3']" "choice = random.choice(list)
     # 1000000 loops, best of 3: 1.92 usec per loop
 
     # Changed to tuple from list based on results
