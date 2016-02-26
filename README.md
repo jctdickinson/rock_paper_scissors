@@ -15,3 +15,4 @@ Commented in results of tuples vs. lists
 
 26 Feb. 2016
 Input validation implemented
+Clear screen function implemented
