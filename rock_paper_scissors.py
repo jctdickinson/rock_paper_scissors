@@ -1,6 +1,6 @@
 """
 By JCT Dickinson
-Using TextMate 2.0-ß.8.5
+Using TextMate 2.0-.8.5
 
 Test of tuple vs. list:
 $ python3 -m timeit "import random" "tuple = ('1', '2', '3')" "choice = random.choice(tuple)
@@ -24,10 +24,8 @@ def clear_screen():
 
 
 def valid_choice(input_string, valid_string):
-    if input_string.upper() not in valid_string or len(input_string) != 1:
-        return False
-    else:
-        return True
+    return input_string.upper() in valid_string and len(input_string) is 1
+
 
 
 def process_choice(input_string):
